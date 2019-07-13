@@ -11,25 +11,26 @@ import androidx.lifecycle.ViewModelProviders
 import com.example.nigeriatelemedicineapp.R
 import com.example.nigeriatelemedicineapp.databinding.ActivityAppointmentFormBinding
 
-
 class RegisterPatientActivity : AppCompatActivity() {
 
     private lateinit var viewModel: RegisterPatientViewModel
     private lateinit var binding: ActivityAppointmentFormBinding
-
+    var progressOverlay: View? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding =
             DataBindingUtil.setContentView(this, com.example.nigeriatelemedicineapp.R.layout.activity_appointment_form)
         viewModel = ViewModelProviders.of(this).get(RegisterPatientViewModel::class.java)
+        progressOverlay= findViewById(R.id.progress_overlay)
         setUpUI()
         setUpObservers()
     }
 
     private fun setUpObservers() {
         val nameObserver = Observer<String> { newName ->
-            Toast.makeText(this, " $newName ", Toast.LENGTH_LONG).show()
+            viewModel.stopAnimation(progressOverlay!!)
+            //Toast.makeText(this, " $newName ", Toast.LENGTH_LONG).show()
         }
 
         viewModel.responseString.observe(this, nameObserver)
@@ -45,7 +46,7 @@ class RegisterPatientActivity : AppCompatActivity() {
     fun setUpUI() {
         setSupportActionBar(binding.toolbar)
         val actionBar = supportActionBar
-        actionBar!!.title = getString(R.string.appointmentFormheading)
+        actionBar!!.title = getString(com.example.nigeriatelemedicineapp.R.string.appointmentFormheading)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
         binding.register.setOnClickListener { Register() }
@@ -62,6 +63,9 @@ class RegisterPatientActivity : AppCompatActivity() {
         else if (radioGroup.checkedRadioButtonId==binding.female.id)
             gender="F"
 
+
+        binding.CardView.visibility=View.INVISIBLE
+        viewModel.startAnimation(progressOverlay!!)
         viewModel.registerPatient(
             binding.firstName.text.toString(),
             binding.lastName.text.toString(),

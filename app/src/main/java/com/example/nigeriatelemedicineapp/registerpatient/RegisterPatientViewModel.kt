@@ -1,10 +1,13 @@
 package com.example.nigeriatelemedicineapp.registerpatient
 
+import android.view.View
+import android.view.animation.AnimationUtils
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.nigeriatelemedicineapp.api.ApiManager
 import com.example.nigeriatelemedicineapp.api.models.*
 import com.example.nigeriatelemedicineapp.repository.Repository
+import com.example.nigeriatelemedicineapp.utils.AnimateUtil
 import com.example.nigeriatelemedicineapp.utils.StringUtils
 import retrofit2.Call
 import retrofit2.Callback
@@ -25,6 +28,16 @@ class RegisterPatientViewModel(_repository: Repository = Repository(ApiManager()
 
     init {
          repository=_repository
+    }
+
+    fun startAnimation(view: View)
+    {
+        AnimateUtil.animateView(view, View.VISIBLE, 0.4f, 200)
+    }
+
+    fun stopAnimation(view: View)
+    {
+        AnimateUtil.animateView(view, View.GONE, 0f, 200);
     }
 
     fun registerPatient(firstname : String, lastname: String,dob : String,gender : String,phone : String)
