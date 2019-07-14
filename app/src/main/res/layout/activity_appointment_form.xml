@@ -10,7 +10,9 @@
         android:background="#FAFBFC"
         tools:context=".registerpatient.RegisterPatientActivity">
 
-        <include layout="@layout/progress_bar_overlay"/>
+        <include
+            android:id="@+id/include"
+            layout="@layout/progress_bar_overlay" />
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/appBarLayout"
@@ -215,6 +217,38 @@
 
         </androidx.cardview.widget.CardView>
 
+        <TextView
+            android:id="@+id/aftertext"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:text="You are being Registered"
+            android:textColor="@color/nigeria_green"
+            android:textSize="24sp"
+            android:gravity="center"
+            android:visibility="gone"
+            app:fontFamily="sans-serif"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/CardView"
+            app:layout_constraintStart_toStartOf="@+id/appBarLayout"
+            app:layout_constraintTop_toTopOf="@+id/appBarLayout"
+            app:layout_constraintVertical_bias="0.43" />
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/appBarLayout"
+            app:layout_constraintTop_toTopOf="@+id/appBarLayout" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </layout>
