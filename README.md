@@ -4,8 +4,7 @@
 
 The Nigeria Telemedicine App is light weight, easy to use telemedicine mobile app developed to make health services more 
 accessible to the Nigerian population. Users can register themselves on the app providing basic details like their
-name ,phone-number and optionally a small description of their ailment. All this can be done within a minute as there is 
-no wasting time in login and verification etc. After succesful registration the user will receive a call from a doctor as
+name ,phone-number. All this can be done within a minute as there is no wasting time in login and verification etc. After succesful registration the user will receive a call from a doctor as
 early as possible. This app is developed and maintained by OpenMRS together with a global community. 
 <br>
 <br>
